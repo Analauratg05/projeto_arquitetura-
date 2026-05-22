@@ -1,0 +1,68 @@
+# ADR 0003 — Modelo de Comunicação
+
+## Status
+Aceito
+
+---
+
+## Contexto
+
+O HealthSync integra:
+- microsserviços,
+- IoT,
+- IA,
+- APIs externas.
+
+Era necessário equilibrar:
+- desacoplamento,
+- performance,
+- confiabilidade.
+
+---
+
+## Decisão
+
+Foi adotado modelo híbrido:
+
+### Comunicação síncrona
+REST APIs para:
+- autenticação,
+- consultas,
+- operações imediatas.
+
+### Comunicação assíncrona
+Mensageria/eventos para:
+- IoT,
+- notificações,
+- processamento IA,
+- integração distribuída.
+
+---
+
+## Alternativas Consideradas
+
+### Apenas REST síncrono
+Rejeitado devido ao alto acoplamento.
+
+### Apenas eventos assíncronos
+Rejeitado devido à complexidade excessiva em operações imediatas.
+
+---
+
+## Trade-off
+Ganhamos:
+- desacoplamento,
+- escalabilidade,
+- tolerância a falhas.
+
+Abrindo mão de:
+- menor complexidade,
+- latência mínima.
+O trade-off é aceitável porque o sistema precisa crescer de forma distribuída e resiliente.
+
+---
+
+## Consequências
+- Necessidade de broker de mensagens
+- Observabilidade distribuída
+- Controle de consistência eventual
