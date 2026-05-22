@@ -1,0 +1,57 @@
+# ADR 0002 — Padrões de Resiliência
+
+## Status
+Aceito
+
+---
+
+## Contexto
+
+O HealthSync depende de múltiplos microsserviços distribuídos.
+Falhas em serviços críticos podem comprometer:
+- teleconsultas,
+- processamento de IA,
+- dados médicos,
+- disponibilidade do sistema.
+Era necessário reduzir falhas em cascata e indisponibilidade.
+
+---
+
+## Decisão
+
+Foram adotados os seguintes padrões:
+- Circuit Breaker
+- Retry
+- Fallback
+- API Gateway
+- Mensageria assíncrona
+
+---
+
+## Alternativas Consideradas
+
+### Comunicação totalmente síncrona
+Rejeitada devido ao alto acoplamento entre serviços.
+
+### Ausência de mecanismos de tolerância
+Rejeitada por aumentar indisponibilidade.
+
+---
+
+## Trade-off
+Ganhamos:
+- maior resiliência,
+- tolerância a falhas,
+- estabilidade.
+
+Abrindo mão de:
+- menor complexidade arquitetural,
+- menor latência em alguns cenários.
+O trade-off é aceitável porque sistemas médicos exigem alta disponibilidade e confiabilidade.
+
+---
+
+## Consequências
+- Necessidade de monitoramento contínuo
+- Maior complexidade operacional
+- Necessidade de observabilidade distribuída
