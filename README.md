@@ -61,12 +61,12 @@ IoT --> MQ
 # Estrutura do Projeto
 
 ```text
-
+diagrams/
+└── diagrams/
 docs/
 ├── adrs/
 └── sad/
-diagrams/
-└── diagrams/
+README.md
 ```
 
 ---
